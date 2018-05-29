@@ -4,5 +4,16 @@ module Api::V1
       @users = User.all
       render json: @users
     end
+
+    def show
+      @user = User.find(find_params.to_h.symbolize_keys)
+      render json: @user
+    end
+
+    private
+
+    def find_params
+      params.permit(:device_id)
+    end
   end
 end
