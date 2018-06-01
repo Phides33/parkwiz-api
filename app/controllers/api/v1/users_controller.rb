@@ -6,7 +6,7 @@ module Api::V1
     end
 
     def show
-      @user = User.find(find_params.to_h.symbolize_keys)
+      @user = User.find_by(device_id: find_params.to_h.symbolize_keys)
       render json: @user
     end
 
